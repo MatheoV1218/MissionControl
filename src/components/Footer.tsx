@@ -5,11 +5,16 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div>
-        <h2>MISSION CONTROL MEDIA</h2>
-        <p>Connecting brands with creators that get the mission.</p>
+        <p className="footer-eyebrow">Mission Control Media</p>
+        <h2>Creators. Brands. Launch.</h2>
+        <p>
+          A retro-future connection hub for businesses and influencers ready to
+          build something different.
+        </p>
       </div>
 
       <div className="footer-links">
+        <Link to="/">Home</Link>
         <Link to="/business">Business</Link>
         <Link to="/profiles">Profiles</Link>
         <Link to="/contact">Contact</Link>

@@ -1,0 +1,16 @@
+.account-page {
+  min-height: 90vh;
+}
+
+.account-panels {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .account-panels {
+    grid-template-columns: 1fr;
+  }
+}

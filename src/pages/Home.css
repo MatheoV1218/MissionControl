@@ -1,5 +1,232 @@
 .home-page {
-  min-height: 90vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.home-hero-section {
+  position: relative;
+  min-height: calc(100vh - 86px);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.home-hero {
+  max-width: 920px;
+  position: relative;
+  z-index: 2;
+}
+
+.home-actions {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.secondary-btn {
+  background: transparent;
+  color: var(--neon-green);
+}
+
+.orbit-visual {
+  position: relative;
+  width: min(34vw, 390px);
+  height: min(34vw, 390px);
+  flex-shrink: 0;
+}
+
+.planet {
+  position: absolute;
+  inset: 28%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, var(--neon-green), transparent 18%),
+    radial-gradient(circle at 62% 65%, var(--retro-orange), transparent 20%),
+    var(--deep-purple);
+  border: 2px solid var(--cream);
+  box-shadow: 0 0 50px rgba(156, 255, 59, 0.25);
+}
+
+.ring {
+  position: absolute;
+  inset: 20%;
+  border: 2px solid rgba(255, 244, 214, 0.7);
+  border-radius: 50%;
+  transform: rotate(-18deg) scaleX(1.7);
+}
+
+.ring-two {
+  transform: rotate(18deg) scaleX(1.6);
+  border-color: rgba(156, 255, 59, 0.5);
+}
+
+.starburst {
+  position: absolute;
+  top: 6%;
+  right: 10%;
+  color: var(--neon-green);
+  font-size: clamp(3rem, 7vw, 6rem);
+  text-shadow: 0 0 30px rgba(156, 255, 59, 0.9);
+}
+
+.about-section {
+  border-top: 1px solid rgba(156, 255, 59, 0.25);
+}
+
+.split-section {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.about-copy {
+  display: grid;
+  gap: 22px;
+  max-width: 780px;
+}
+
+.process-section {
+  background: rgba(255, 244, 214, 0.03);
+  border-top: 1px solid rgba(156, 255, 59, 0.18);
+  border-bottom: 1px solid rgba(156, 255, 59, 0.18);
+}
+
+.mission-steps {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.mission-step {
+  padding: 28px;
+  background: rgba(33, 17, 63, 0.55);
+  border: 1px solid var(--border);
+  box-shadow: 8px 8px 0 rgba(255, 159, 28, 0.25);
+}
+
+.mission-step span {
+  display: inline-block;
+  color: var(--neon-green);
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+.mission-step h3 {
+  color: var(--cream);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.ceo-section {
+  padding-bottom: 120px;
+}
+
+.ceo-card {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 42px;
+  align-items: stretch;
+  background: rgba(255, 244, 214, 0.08);
+  border: 1px solid var(--border);
+  box-shadow: 12px 12px 0 rgba(125, 76, 255, 0.45);
+  padding: 34px;
+}
+
+.ceo-image {
+  min-height: 520px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(156, 255, 59, 0.3), transparent 22%),
+    radial-gradient(circle at 70% 70%, rgba(255, 159, 28, 0.22), transparent 24%),
+    linear-gradient(135deg, rgba(125, 76, 255, 0.6), rgba(7, 7, 17, 0.9));
+  border: 1px solid rgba(255, 244, 214, 0.25);
+}
+
+.ceo-image span {
+  color: var(--neon-green);
+  font-size: clamp(4rem, 10vw, 9rem);
+  font-weight: 900;
+  letter-spacing: -6px;
+  text-shadow: 7px 7px 0 var(--space-black);
+}
+
+.ceo-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ceo-content p {
+  margin-bottom: 18px;
+}
+
+@media (max-width: 1100px) {
+  .home-hero-section {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .orbit-visual {
+    width: min(70vw, 360px);
+    height: min(70vw, 360px);
+    margin: 10px auto 0;
+  }
+
+  .split-section,
+  .ceo-card {
+    grid-template-columns: 1fr;
+  }
+
+  .ceo-image {
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 900px) {
+  .mission-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .home-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .home-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-hero-section {
+    min-height: auto;
+  }
+
+  .orbit-visual {
+    width: 250px;
+    height: 250px;
+  }
+
+  .ceo-card {
+    padding: 20px;
+    box-shadow: 7px 7px 0 rgba(125, 76, 255, 0.45);
+  }
+
+  .ceo-image {
+    min-height: 260px;
+  }
+
+  .ceo-image span {
+    letter-spacing: -3px;
+  }
+
+  .mission-step {
+    padding: 22px;
+  }
 }
