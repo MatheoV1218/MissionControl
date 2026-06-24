@@ -1,63 +1,8 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import ProfileCard from "../components/ProfileCard";
+import { profiles } from "../data/profiles";
 import "./Profiles.css";
-
-const profiles = [
-  {
-    name: "Local Eats Co.",
-    type: "Business",
-    location: "White Plains, NY",
-    niche: "Food + Lifestyle",
-    rate: "Campaign Budget",
-    description:
-      "A neighborhood restaurant looking for creators to help launch seasonal menu campaigns.",
-  },
-  {
-    name: "Nia Creates",
-    type: "Creator",
-    location: "Westchester, NY",
-    niche: "Beauty + Lifestyle",
-    rate: "$250+",
-    description:
-      "A lifestyle creator focused on honest reviews, short-form videos, and local brand storytelling.",
-  },
-  {
-    name: "Studio Orbit",
-    type: "Business",
-    location: "New York",
-    niche: "Fitness + Wellness",
-    rate: "Paid Collabs",
-    description:
-      "A boutique studio searching for creators who can capture wellness, community, and movement.",
-  },
-  {
-    name: "Kai Visuals",
-    type: "Creator",
-    location: "NYC",
-    niche: "Photo + Video",
-    rate: "$400+",
-    description:
-      "A visual storyteller creating cinematic reels, launch videos, and social campaigns.",
-  },
-  {
-    name: "Glow Market",
-    type: "Business",
-    location: "Brooklyn, NY",
-    niche: "Beauty + Retail",
-    rate: "Gifted + Paid",
-    description:
-      "A small beauty shop looking for creators to highlight new products and local events.",
-  },
-  {
-    name: "Maya Moves",
-    type: "Creator",
-    location: "White Plains, NY",
-    niche: "Fitness + Wellness",
-    rate: "$300+",
-    description:
-      "A wellness creator focused on fitness routines, studio visits, and healthy lifestyle content.",
-  },
-];
 
 function Profiles() {
   const [search, setSearch] = useState("");
@@ -67,7 +12,7 @@ function Profiles() {
     return profiles.filter((profile) => {
       const matchesFilter = filter === "All" || profile.type === filter;
 
-      const searchText = `${profile.name} ${profile.type} ${profile.location} ${profile.niche} ${profile.description}`.toLowerCase();
+      const searchText = `${profile.name} ${profile.type} ${profile.location} ${profile.niche} ${profile.bio}`.toLowerCase();
 
       const matchesSearch = searchText.includes(search.toLowerCase());
 
@@ -98,6 +43,7 @@ function Profiles() {
             {["All", "Business", "Creator"].map((item) => (
               <button
                 key={item}
+                type="button"
                 className={filter === item ? "active" : ""}
                 onClick={() => setFilter(item)}
               >
@@ -115,7 +61,20 @@ function Profiles() {
 
       <div className="profiles-grid">
         {filteredProfiles.map((profile) => (
-          <ProfileCard key={profile.name} {...profile} />
+          <Link
+            key={profile.id}
+            to={`/profiles/${profile.id}`}
+            className="profile-card-link"
+          >
+            <ProfileCard
+              name={profile.name}
+              type={profile.type}
+              location={profile.location}
+              niche={profile.niche}
+              rate={profile.rate}
+              description={profile.bio}
+            />
+          </Link>
         ))}
       </div>
     </section>
