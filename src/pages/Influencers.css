@@ -1,10 +1,10 @@
-.business-page-hero {
+.influencer-page-hero {
   min-height: auto;
   padding-top: 64px;
   padding-bottom: 36px;
 }
 
-.business-hero {
+.influencer-hero {
   width: min(900px, 100%);
   background: rgba(255, 243, 215, 0.96);
   border: 2px solid var(--ink);
@@ -14,7 +14,7 @@
   overflow: hidden;
 }
 
-.business-hero h1 {
+.influencer-hero h1 {
   color: var(--ink);
   font-size: clamp(2.9rem, 6.2vw, 6.4rem);
   line-height: 1.03;
@@ -22,28 +22,28 @@
   overflow-wrap: anywhere;
 }
 
-.business-hero p {
+.influencer-hero p {
   max-width: 700px;
 }
 
-.business-tools {
+.creator-tools {
   padding-top: 28px;
 }
 
-.business-tools .section-head h2 {
+.creator-tools .section-head h2 {
   color: var(--cream);
   text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.45);
 }
 
-.business-tools .section-head p {
+.creator-tools .section-head p {
   color: var(--paper);
 }
 
-.business-cta {
+.creator-cta {
   padding-top: 30px;
 }
 
-.business-panel {
+.creator-panel {
   padding: clamp(28px, 5vw, 54px);
   display: flex;
   justify-content: space-between;
@@ -51,24 +51,24 @@
   gap: 28px;
 }
 
-.business-panel h2 {
+.creator-panel h2 {
   color: var(--cream);
 }
 
-.business-panel .btn {
+.creator-panel .btn {
   flex-shrink: 0;
 }
 
 @media (max-width: 800px) {
-  .business-page-hero {
+  .influencer-page-hero {
     padding-top: 42px;
   }
 
-  .business-panel {
+  .creator-panel {
     display: grid;
   }
 
-  .business-hero h1 {
+  .influencer-hero h1 {
     font-size: clamp(2.65rem, 13vw, 4.7rem);
   }
 }

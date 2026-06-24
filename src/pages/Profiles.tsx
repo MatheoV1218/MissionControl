@@ -1,55 +1,121 @@
-import { Link } from "react-router-dom";
+import { useMemo, useState } from "react";
+import ProfileCard from "../components/ProfileCard";
 import "./Profiles.css";
 
-const mockProfiles = [
+const profiles = [
   {
-    name: "Luna Vega",
+    name: "Local Eats Co.",
+    type: "Business",
+    location: "White Plains, NY",
+    niche: "Food + Lifestyle",
+    rate: "Campaign Budget",
+    description:
+      "A neighborhood restaurant looking for creators to help launch seasonal menu campaigns.",
+  },
+  {
+    name: "Nia Creates",
+    type: "Creator",
+    location: "Westchester, NY",
+    niche: "Beauty + Lifestyle",
+    rate: "$250+",
+    description:
+      "A lifestyle creator focused on honest reviews, short-form videos, and local brand storytelling.",
+  },
+  {
+    name: "Studio Orbit",
+    type: "Business",
+    location: "New York",
+    niche: "Fitness + Wellness",
+    rate: "Paid Collabs",
+    description:
+      "A boutique studio searching for creators who can capture wellness, community, and movement.",
+  },
+  {
+    name: "Kai Visuals",
+    type: "Creator",
+    location: "NYC",
+    niche: "Photo + Video",
+    rate: "$400+",
+    description:
+      "A visual storyteller creating cinematic reels, launch videos, and social campaigns.",
+  },
+  {
+    name: "Glow Market",
+    type: "Business",
+    location: "Brooklyn, NY",
+    niche: "Beauty + Retail",
+    rate: "Gifted + Paid",
+    description:
+      "A small beauty shop looking for creators to highlight new products and local events.",
+  },
+  {
+    name: "Maya Moves",
     type: "Creator",
     location: "White Plains, NY",
-    niche: "Lifestyle / Food / Local Spots",
-  },
-  {
-    name: "North Star Fitness",
-    type: "Business",
-    location: "Westchester, NY",
-    niche: "Fitness / Wellness / Community",
-  },
-  {
-    name: "Orbit Eats",
-    type: "Business",
-    location: "New York, NY",
-    niche: "Restaurant / Events / Nightlife",
+    niche: "Fitness + Wellness",
+    rate: "$300+",
+    description:
+      "A wellness creator focused on fitness routines, studio visits, and healthy lifestyle content.",
   },
 ];
 
 function Profiles() {
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("All");
+
+  const filteredProfiles = useMemo(() => {
+    return profiles.filter((profile) => {
+      const matchesFilter = filter === "All" || profile.type === filter;
+
+      const searchText = `${profile.name} ${profile.type} ${profile.location} ${profile.niche} ${profile.description}`.toLowerCase();
+
+      const matchesSearch = searchText.includes(search.toLowerCase());
+
+      return matchesFilter && matchesSearch;
+    });
+  }, [search, filter]);
+
   return (
     <section className="page profiles-page">
-      <div className="page-hero">
-        <p className="eyebrow">Profiles / Your Account</p>
-        <h1>Search The Signal</h1>
+      <div className="profiles-hero">
+        <p className="kicker">Creator + Brand Radar</p>
+        <h1>Explore Profiles</h1>
         <p>
-          This will become the main profile discovery area. Users will search by
-          location, browse creators and businesses, then request a match through
-          Mission Control.
+          Search businesses, creators, niches, locations, rates, and campaign
+          styles. This is where brands and influencers discover the right match
+          before launching a collaboration.
         </p>
 
-        <div className="search-preview">
-          <input placeholder="Search a city or area, like White Plains, NY" />
-          <button>Search</button>
+        <div className="profile-search-panel">
+          <input
+            type="text"
+            placeholder="Search food, fitness, White Plains, beauty, video..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+
+          <div className="profile-filters">
+            {["All", "Business", "Creator"].map((item) => (
+              <button
+                key={item}
+                className={filter === item ? "active" : ""}
+                onClick={() => setFilter(item)}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="profile-grid">
-        {mockProfiles.map((profile) => (
-          <div className="profile-card" key={profile.name}>
-            <div className="profile-image-placeholder">✦</div>
-            <p className="profile-type">{profile.type}</p>
-            <h3>{profile.name}</h3>
-            <p>{profile.location}</p>
-            <p>{profile.niche}</p>
-            <Link to="/account">View Profile</Link>
-          </div>
+      <div className="profiles-results-head">
+        <h2>Discovery Radar</h2>
+        <p>{filteredProfiles.length} profile matches found</p>
+      </div>
+
+      <div className="profiles-grid">
+        {filteredProfiles.map((profile) => (
+          <ProfileCard key={profile.name} {...profile} />
         ))}
       </div>
     </section>

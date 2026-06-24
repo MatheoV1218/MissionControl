@@ -3,31 +3,48 @@ import "./Account.css";
 function Account() {
   return (
     <section className="page account-page">
-      <div className="page-hero">
-        <p className="eyebrow">Your Account</p>
-        <h1>Build Your Mission Profile</h1>
+      <div className="account-panel">
+        <p className="kicker">Create Profile</p>
+        <h1>Build Your Launch File</h1>
         <p>
-          This area will eventually handle login, signup, profile editing,
-          uploaded images, availability, and collaboration preferences.
+          This page is set up as a front-end placeholder for Supabase. Later,
+          this can connect to authentication, profile images, bios, rates,
+          platforms, campaign goals, and saved matches.
         </p>
-      </div>
 
-      <div className="account-panels">
-        <div className="retro-card">
-          <h3>For Creators</h3>
-          <p>
-            Create a profile with your bio, location, niche, socials, images,
-            availability, and the types of brands you want to work with.
-          </p>
-        </div>
+        <form className="account-form">
+          <label>
+            Profile Type
+            <select>
+              <option>Business</option>
+              <option>Influencer / Creator</option>
+            </select>
+          </label>
 
-        <div className="retro-card">
-          <h3>For Businesses</h3>
-          <p>
-            Create a business profile with your brand details, campaign goals,
-            location, and what kind of creators you want to connect with.
-          </p>
-        </div>
+          <label>
+            Name / Brand
+            <input type="text" placeholder="Moonshot Coffee Co." />
+          </label>
+
+          <label>
+            Location
+            <input type="text" placeholder="White Plains, NY" />
+          </label>
+
+          <label>
+            Niche
+            <input type="text" placeholder="Food, beauty, fitness, lifestyle..." />
+          </label>
+
+          <label>
+            Bio
+            <textarea placeholder="Describe your brand, audience, goals, or content style..." />
+          </label>
+
+          <button type="submit" className="btn">
+            Save Profile
+          </button>
+        </form>
       </div>
     </section>
   );

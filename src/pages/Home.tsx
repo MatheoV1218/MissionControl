@@ -3,119 +3,66 @@ import "./Home.css";
 
 function Home() {
   return (
-    <section className="home-page">
-      <section className="page home-hero-section">
-        <div className="page-hero home-hero">
-          <p className="eyebrow">Influencer marketing from another orbit</p>
-
-          <h1>Connecting Brands With Creators That Get The Mission</h1>
-
+    <>
+      <section className="page home-hero">
+        <div className="hero-copy">
+          <p className="kicker">Welcome To Mission Control</p>
+          <h1>Launch Your Brand Into The Creator Economy</h1>
           <p>
-            Mission Control Media is an influencer marketing and creative agency
-            built to connect businesses with content creators who feel authentic,
-            aligned, and community-driven.
+            Moonshot Media connects small businesses with influencers and
+            content creators in a simple, approachable way. It is a matchmaking
+            platform built for local brands, real creators, and meaningful
+            collaborations.
           </p>
 
-          <div className="home-actions">
-            <Link to="/profiles" className="btn">
-              Explore Profiles
-            </Link>
-
-            <Link to="/business" className="btn secondary-btn">
+          <div className="btn-row">
+            <Link to="/business" className="btn">
               For Businesses
             </Link>
+            <Link to="/influencers" className="btn alt">
+              For Influencers
+            </Link>
           </div>
         </div>
 
-        <div className="orbit-visual" aria-hidden="true">
-          <div className="planet"></div>
-          <div className="ring ring-one"></div>
-          <div className="ring ring-two"></div>
-          <div className="starburst">✦</div>
-        </div>
-      </section>
-
-      <section className="page about-section">
-        <div className="split-section">
-          <div>
-            <p className="eyebrow">About Us</p>
-            <h2>We Turn Collaboration Into Community</h2>
-          </div>
-
-          <div className="about-copy">
-            <p>
-              Mission Control Media helps brands and creators build real
-              partnerships instead of random one-time promotions. We focus on
-              matching businesses with niche, local influencers who genuinely
-              align with their brand, audience, and goals.
-            </p>
-
-            <p>
-              From initial outreach to final content delivery, Mission Control
-              helps manage the moving parts of the campaign. That can include
-              creator discovery, communication, negotiation, scheduling,
-              coordination, and making sure both sides know exactly what is
-              expected.
-            </p>
-          </div>
-        </div>
-
-        <div className="section-grid">
-          <div className="retro-card">
-            <h3>Creator Matching</h3>
-            <p>
-              We help businesses discover creators based on location, niche,
-              audience, style, and collaboration goals.
-            </p>
-          </div>
-
-          <div className="retro-card">
-            <h3>Campaign Direction</h3>
-            <p>
-              We help organize the plan so the collaboration feels clear,
-              professional, and easy to follow from start to finish.
-            </p>
-          </div>
-
-          <div className="retro-card">
-            <h3>Partnership Support</h3>
-            <p>
-              We stay involved as the middle point so businesses and creators
-              can focus on making strong content.
-            </p>
-          </div>
+        <div className="mission-card">
+          <span>Mission Status</span>
+          <h3>Ready For Liftoff</h3>
+          <p>
+            Build a profile, find aligned matches, and launch campaigns with the
+            right people.
+          </p>
         </div>
       </section>
 
-      <section className="page process-section">
-        <p className="eyebrow">How It Works</p>
-        <h2>Search. Request. Launch.</h2>
+      <section className="page home-how">
+        <div className="section-head">
+          <p className="kicker">How It Works</p>
+          <h2>Connect. Collaborate. Create.</h2>
+        </div>
 
-        <div className="mission-steps">
-          <div className="mission-step">
-            <span>01</span>
-            <h3>Search The Area</h3>
+        <div className="grid-3">
+          <div className="retro-card">
+            <h3>Build Your Profile</h3>
             <p>
-              Users can search a general location like White Plains, New York,
-              and discover businesses or creators in that area.
+              Businesses and creators share their goals, location, budget,
+              audience, niche, and expectations.
             </p>
           </div>
 
-          <div className="mission-step">
-            <span>02</span>
-            <h3>Find The Fit</h3>
+          <div className="retro-card">
+            <h3>Find Your Match</h3>
             <p>
-              Profiles can show bios, images, social links, niches,
-              availability, and collaboration preferences.
+              Brands discover creators who fit their audience, values, style,
+              engagement, and campaign goals.
             </p>
           </div>
 
-          <div className="mission-step">
-            <span>03</span>
-            <h3>Request The Match</h3>
+          <div className="retro-card">
+            <h3>Launch Together</h3>
             <p>
-              Once someone is interested, Mission Control receives the request
-              and helps coordinate the next step.
+              Once there is a strong match, both sides connect and turn the
+              campaign into real content.
             </p>
           </div>
         </div>
@@ -123,36 +70,26 @@ function Home() {
 
       <section className="page ceo-section">
         <div className="ceo-card">
-          <div className="ceo-image">
-            <span>CEO</span>
-          </div>
+          <div className="ceo-orbit">MS</div>
 
-          <div className="ceo-content">
-            <p className="eyebrow">Meet The CEO</p>
+          <div>
+            <p className="kicker">Founder / CEO</p>
             <h2>Mecca Shabazz</h2>
-
             <p>
-              Mission Control was created after seeing both sides of the
-              influencer industry firsthand. The goal is to help businesses and
-              creators build partnerships rooted in trust, accountability,
-              communication, and genuine collaboration.
+              Mecca Shabazz is building Moonshot Media to make influencer
+              marketing feel less intimidating for small businesses and more
+              valuable for creators. Her vision is to create a Mission Control
+              for partnerships where brands can get guidance, build strong
+              profiles, and discover creators who actually fit their goals.
             </p>
 
-            <p>
-              As the CEO of Mission Control Media, Mecca focuses on navigating
-              the space between brands and creators to build partnerships that
-              truly resonate. Her work centers on aligning the right voices with
-              the right audiences to create campaigns that feel natural,
-              impactful, and lasting.
-            </p>
-
-            <Link to="/contact" className="btn">
-              Contact Mission Control
+            <Link to="/contact" className="btn dark">
+              Book A Sit Down
             </Link>
           </div>
         </div>
       </section>
-    </section>
+    </>
   );
 }
 

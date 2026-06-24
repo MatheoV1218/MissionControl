@@ -1,93 +1,162 @@
 .profiles-page {
-  min-height: 90vh;
+  padding-top: 64px;
 }
 
-.search-preview {
-  margin-top: 34px;
-  display: flex;
+.profiles-hero {
+  width: min(900px, 100%);
+  background: rgba(255, 243, 215, 0.96);
+  border: 2px solid var(--ink);
+  border-radius: 38px;
+  box-shadow: var(--shadow);
+  padding: clamp(28px, 4vw, 46px);
+  overflow: hidden;
+}
+
+.profiles-hero h1 {
+  color: var(--ink);
+  font-size: clamp(3.2rem, 6.5vw, 6.8rem);
+  line-height: 1;
+  max-width: 760px;
+  text-shadow: none;
+}
+
+.profiles-hero p {
   max-width: 720px;
-  border: 2px solid var(--neon-green);
-  box-shadow: 8px 8px 0 var(--retro-purple);
 }
 
-.search-preview input {
-  flex: 1;
-  padding: 18px;
-  border: none;
+.profile-search-panel {
+  margin-top: 26px;
+  display: grid;
+  gap: 16px;
+}
+
+.profile-search-panel input {
+  width: 100%;
+  min-height: 56px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--ink);
+  padding: 0 20px;
+  font-weight: 800;
   outline: none;
-  background: var(--cream);
-  color: var(--space-black);
-  font-size: 1rem;
+  box-shadow: 4px 4px 0 var(--ink);
 }
 
-.search-preview button {
-  padding: 0 24px;
-  background: var(--neon-green);
-  border: none;
-  color: var(--space-black);
+.profile-search-panel input:focus {
+  box-shadow: 4px 4px 0 var(--ink), 0 0 0 4px var(--yellow);
+}
+
+.profile-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.profile-filters button {
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 12px 18px;
   font-weight: 900;
-  text-transform: uppercase;
   cursor: pointer;
+  box-shadow: 4px 4px 0 var(--ink);
 }
 
-.profile-grid {
-  margin-top: 70px;
+.profile-filters button.active,
+.profile-filters button:hover {
+  background: var(--orange);
+}
+
+.profiles-results-head {
+  margin-top: 56px;
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: end;
+}
+
+.profiles-results-head h2 {
+  color: var(--cream);
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.45);
+}
+
+.profiles-results-head p {
+  color: var(--paper);
+  font-weight: 800;
+}
+
+.profiles-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
-.profile-card {
-  background: rgba(255, 244, 214, 0.08);
-  border: 1px solid var(--border);
-  padding: 24px;
-  box-shadow: 8px 8px 0 rgba(255, 159, 28, 0.35);
+@media (max-width: 1000px) {
+  .profiles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.profile-image-placeholder {
-  height: 220px;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(circle, rgba(156, 255, 59, 0.25), transparent 45%),
-    var(--deep-purple);
-  color: var(--neon-green);
-  font-size: 4rem;
-  margin-bottom: 22px;
-}
-
-.profile-type {
-  color: var(--neon-green);
-  text-transform: uppercase;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-
-.profile-card h3 {
-  font-size: 1.7rem;
-  margin: 10px 0;
-  text-transform: uppercase;
-}
-
-.profile-card a {
-  display: inline-block;
-  margin-top: 18px;
-  color: var(--neon-green);
-  font-weight: 900;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-
-@media (max-width: 900px) {
-  .profile-grid {
+@media (max-width: 700px) {
+  .profiles-grid {
     grid-template-columns: 1fr;
   }
 
-  .search-preview {
-    flex-direction: column;
+  .profiles-results-head {
+    display: block;
   }
 
-  .search-preview button {
-    padding: 16px;
+  .profile-filters button {
+    flex: 1;
+  }
+}
+
+@media (max-width: 1000px) {
+  .profiles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .profiles-page {
+    width: min(100% - 20px, 1180px);
+    padding-top: 42px;
+  }
+
+  .profiles-hero {
+    padding: 24px;
+  }
+
+  .profiles-hero h1 {
+    font-size: clamp(2.7rem, 14vw, 4.6rem);
+  }
+
+  .profiles-results-head {
+    display: block;
+    margin-top: 38px;
+  }
+
+  .profiles-results-head h2 {
+    font-size: clamp(2.2rem, 11vw, 3.8rem);
+  }
+
+  .profile-filters button {
+    flex: 1;
+    padding: 10px 12px;
+  }
+
+  .profiles-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 390px) {
+  .profiles-grid {
+    grid-template-columns: 1fr;
   }
 }
