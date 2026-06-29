@@ -6,6 +6,11 @@
   box-shadow: var(--shadow);
   position: relative;
   overflow: hidden;
+  width: 100%;
+  min-height: 430px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .profile-card::before {
@@ -15,14 +20,15 @@
   height: 150px;
   right: -70px;
   top: -70px;
-  background: var(--yellow);
+  background: var(--mint);
   border: 2px solid var(--ink);
   border-radius: 50%;
 }
 
 .profile-badge {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  width: fit-content;
   display: inline-flex;
   background: var(--mint);
   border: 2px solid var(--ink);
@@ -33,36 +39,73 @@
   text-transform: uppercase;
 }
 
-.profile-avatar {
+.profile-top-row {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 18px;
+  min-height: 92px;
+}
+
+.profile-avatar,
+.profile-picture {
   width: 74px;
   height: 74px;
-  margin-top: 20px;
+  flex: 0 0 74px;
   border-radius: 50%;
-  background: var(--purple);
-  color: var(--cream);
   border: 2px solid var(--ink);
   display: grid;
   place-items: center;
+}
+
+.profile-avatar {
+  background: var(--purple);
+  color: var(--cream);
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.profile-picture {
+  background: var(--paper);
+  overflow: hidden;
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-picture span {
+  color: var(--ink);
   font-size: 2rem;
   font-weight: 900;
 }
 
 .profile-card h3 {
   color: var(--ink);
-  margin-top: 16px;
+  margin-top: 18px;
+  min-height: 78px;
 }
 
 .profile-card p {
   margin-top: 8px;
+  min-height: 88px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .profile-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 16px;
+  margin-top: auto;
+  padding-top: 16px;
 }
 
 .profile-meta span {
@@ -76,6 +119,7 @@
 
 @media (max-width: 700px) {
   .profile-card {
+    min-height: 300px;
     padding: 14px;
     border-radius: 20px;
     box-shadow: 4px 4px 0 var(--ink);
@@ -93,26 +137,39 @@
     font-size: 0.68rem;
   }
 
-  .profile-avatar {
-    width: 48px;
-    height: 48px;
-    font-size: 1.25rem;
+  .profile-top-row {
+    gap: 10px;
     margin-top: 12px;
+    min-height: 58px;
+  }
+
+  .profile-avatar,
+  .profile-picture {
+    width: 46px;
+    height: 46px;
+    flex-basis: 46px;
+    font-size: 1.2rem;
+  }
+
+  .profile-picture {
+    box-shadow: 3px 3px 0 var(--ink);
   }
 
   .profile-card h3 {
     font-size: 1.35rem;
     margin-top: 10px;
+    min-height: 52px;
   }
 
   .profile-card p {
     font-size: 0.82rem;
     line-height: 1.45;
+    min-height: 64px;
   }
 
   .profile-meta {
     gap: 6px;
-    margin-top: 10px;
+    padding-top: 10px;
   }
 
   .profile-meta span {

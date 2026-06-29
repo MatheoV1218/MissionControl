@@ -4,7 +4,7 @@
   z-index: 50;
   width: min(1400px, calc(100% - 32px));
   margin: 16px auto 0;
-  padding: 14px;
+  padding: 10px 16px;
   background: rgba(248, 231, 189, 0.96);
   border: 2px solid var(--border);
   border-radius: 999px;
@@ -13,22 +13,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--ink);
-  text-decoration: none;
-  font-weight: 900;
-  text-transform: uppercase;
-  white-space: nowrap;
-  z-index: 55;
-}
-
-.brand strong {
-  color: var(--orange);
 }
 
 .brand {
@@ -43,12 +27,6 @@
   width: auto;
   object-fit: contain;
   display: block;
-}
-
-@media (max-width: 860px) {
-  .brand-logo {
-    height: 42px;
-  }
 }
 
 .nav-links {
@@ -68,21 +46,36 @@
 
 .nav-links a.active,
 .nav-links a:hover {
-  background: var(--yellow);
+  background: var(--mint);
 }
 
 .nav-button,
 .mobile-profile-btn {
-  background: var(--orange);
+  background: var(--purple);
   color: var(--ink);
   border: 2px solid var(--ink);
   border-radius: 999px;
-  padding: 12px 16px;
+  padding: 12px 18px;
   font-weight: 900;
   text-decoration: none;
   text-transform: uppercase;
   box-shadow: 4px 4px 0 var(--ink);
   white-space: nowrap;
+}
+
+.account-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: var(--purple);
+  color: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  box-shadow: 4px 4px 0 var(--ink);
+  font-weight: 900;
+  font-size: 1.15rem;
+  text-decoration: none;
 }
 
 .mobile-profile-btn {
@@ -95,7 +88,7 @@
   height: 42px;
   border: 2px solid var(--ink);
   border-radius: 999px;
-  background: var(--yellow);
+  background: var(--mint);
   box-shadow: 3px 3px 0 var(--ink);
   cursor: pointer;
   z-index: 55;
@@ -111,16 +104,33 @@
   transition: 0.2s ease;
 }
 
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 @media (max-width: 860px) {
   .site-header {
     border-radius: 28px;
+  }
+
+  .brand-logo {
+    height: 42px;
   }
 
   .menu-toggle {
     display: block;
   }
 
-  .nav-button {
+  .nav-button,
+  .account-icon {
     display: none;
   }
 
@@ -146,13 +156,12 @@
     width: 100%;
     padding: 14px 16px;
     background: rgba(255, 250, 240, 0.65);
-    border: 2px solid rgba(23, 20, 47, 0.18);
+    border: 2px solid rgba(0, 0, 0, 0.18);
   }
 
   .mobile-profile-btn {
     display: block;
     text-align: center;
-    background: var(--orange) !important;
-    border-color: var(--ink) !important;
+    background: var(--purple) !important;
   }
 }

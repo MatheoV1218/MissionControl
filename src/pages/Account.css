@@ -1,5 +1,5 @@
 .account-page {
-  margin-top: 60px;
+  padding-top: 64px;
 }
 
 .account-panel {
@@ -10,22 +10,74 @@
   padding: clamp(28px, 5vw, 58px);
 }
 
-.account-panel h1 {
-  color: var(--ink);
+.account-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
 }
 
-.account-panel > p {
-  max-width: 820px;
+.account-panel h1 {
+  color: var(--ink);
+  font-size: clamp(3.2rem, 7vw, 7rem);
+  line-height: 1;
+}
+
+.account-panel h2 {
+  color: var(--ink);
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  line-height: 1;
+}
+
+.logout-btn {
+  background: var(--mint);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0 var(--ink);
+  cursor: pointer;
+}
+
+.admin-access,
+.account-choice,
+.request-history,
+.owned-profiles {
+  margin-top: 34px;
+  padding: 24px;
+  background: rgba(255, 250, 240, 0.65);
+  border: 2px solid var(--ink);
+  border-radius: 28px;
+}
+
+.admin-access .btn {
+  margin-top: 20px;
+}
+
+.account-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 22px;
 }
 
 .account-form {
-  margin-top: 32px;
+  margin-top: 36px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 18px;
 }
 
-.account-form label {
+.account-form h2,
+.account-form .full,
+.account-form button {
+  grid-column: 1 / -1;
+}
+
+.account-form label,
+.owned-profile-card label {
   display: grid;
   gap: 8px;
   color: var(--ink);
@@ -34,13 +86,11 @@
   font-size: 0.85rem;
 }
 
-.account-form label:last-of-type {
-  grid-column: 1 / -1;
-}
-
 .account-form input,
-.account-form select,
-.account-form textarea {
+.account-form textarea,
+.owned-profile-card input,
+.owned-profile-card textarea {
+  width: 100%;
   border: 2px solid var(--ink);
   border-radius: 18px;
   padding: 14px 16px;
@@ -48,22 +98,129 @@
   color: var(--ink);
 }
 
-.account-form textarea {
+.account-form textarea,
+.owned-profile-card textarea {
   min-height: 150px;
   resize: vertical;
 }
 
-.account-form button {
-  grid-column: 1 / -1;
+.date-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+.date-row button,
+.availability-list button {
+  background: var(--mint);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 900;
   cursor: pointer;
 }
 
+.availability-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.request-list,
+.owned-profile-list {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.request-card,
+.owned-profile-card {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: 22px;
+  padding: 18px;
+}
+
+.request-card h3,
+.owned-profile-card h3 {
+  color: var(--ink);
+}
+
+.request-card span {
+  display: inline-flex;
+  margin-top: 10px;
+  background: var(--purple);
+  color: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.owned-profile-card {
+  display: grid;
+  gap: 14px;
+}
+
+.owned-profile-card .btn {
+  margin-top: 8px;
+}
+
+.account-preview-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 2px solid var(--ink);
+  border-radius: 24px;
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.account-image-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.account-image-grid img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+}
+
+.profile-availability-editor {
+  display: grid;
+  gap: 12px;
+}
+
+.profile-availability-editor h4 {
+  color: var(--ink);
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
 @media (max-width: 800px) {
+  .account-page {
+    padding-top: 42px;
+  }
+
+  .account-top,
   .account-form {
+    display: grid;
     grid-template-columns: 1fr;
   }
-}
-.account-panel h1 {
-  line-height: 1;
-  font-size: clamp(3.2rem, 7vw, 7rem);
+
+  .account-buttons {
+    display: grid;
+  }
+
+  .logout-btn {
+    width: fit-content;
+  }
+
+  .account-image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

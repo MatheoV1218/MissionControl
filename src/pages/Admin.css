@@ -1,0 +1,264 @@
+.admin-page {
+  padding-top: 64px;
+  width: min(1200px, calc(100% - 28px));
+}
+
+.admin-card,
+.admin-row,
+.admin-stats > div,
+.admin-filter-card {
+  background: rgba(255, 243, 215, 0.96);
+  border: 2px solid var(--ink);
+  border-radius: 32px;
+  box-shadow: var(--shadow);
+  padding: clamp(20px, 3vw, 28px);
+}
+
+.admin-hero {
+  overflow: hidden;
+}
+
+.admin-section,
+.admin-filter-card {
+  margin-top: 34px;
+}
+
+.admin-card h1 {
+  color: var(--ink);
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1;
+}
+
+.admin-card h2,
+.admin-row h3,
+.admin-stats h3,
+.admin-filter-card h2 {
+  color: var(--ink);
+}
+
+.admin-tabs,
+.request-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.admin-tabs button,
+.admin-actions button,
+.request-filters button {
+  border: 2px solid var(--ink);
+  background: var(--mint);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.request-filters button.active {
+  background: var(--purple);
+  color: var(--cream);
+}
+
+.admin-stats {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.admin-stats h3 {
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+}
+
+.admin-list {
+  margin-top: 34px;
+  display: grid;
+  gap: 18px;
+}
+
+.admin-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.request-email-box {
+  margin-top: 14px;
+  display: grid;
+  gap: 4px;
+}
+
+.request-email-box span {
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.request-email-box a {
+  color: var(--purple);
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.admin-search {
+  width: 100%;
+  margin-top: 18px;
+  min-height: 52px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 0 18px;
+  background: var(--white);
+  font-weight: 900;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.admin-mini-list {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.admin-mini-row {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  padding: 14px;
+  display: grid;
+  gap: 4px;
+}
+
+.admin-mini-row span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.admin-form {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  overflow: hidden;
+}
+
+.admin-form input,
+.admin-form textarea {
+  width: 100%;
+  min-width: 0;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  padding: 14px;
+  background: var(--white);
+}
+
+.admin-form textarea,
+.admin-form button,
+.admin-file-label {
+  grid-column: 1 / -1;
+}
+
+.admin-form textarea {
+  min-height: 140px;
+}
+
+.admin-file-label {
+  display: grid;
+  gap: 8px;
+  color: var(--ink);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.admin-file-label span {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-transform: none;
+  font-weight: 700;
+}
+
+.admin-image-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.admin-image-strip img {
+  width: 78px;
+  height: 78px;
+  object-fit: cover;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+}
+
+@media (max-width: 900px) {
+  .admin-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .admin-row {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 620px) {
+  .admin-page {
+    width: min(100% - 20px, 1200px);
+    padding-top: 42px;
+  }
+
+  .admin-card,
+  .admin-row,
+  .admin-stats > div,
+  .admin-filter-card {
+    border-radius: 24px;
+    box-shadow: 4px 4px 0 var(--ink);
+    padding: 18px;
+  }
+
+  .admin-card h1 {
+    font-size: clamp(2.8rem, 15vw, 4.5rem);
+  }
+
+  .admin-card h2,
+  .admin-filter-card h2 {
+    font-size: clamp(2.1rem, 11vw, 3.2rem);
+  }
+
+  .admin-tabs,
+  .request-filters,
+  .admin-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .admin-tabs button,
+  .admin-actions button,
+  .request-filters button {
+    width: 100%;
+    padding: 12px 14px;
+  }
+
+  .admin-form {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .admin-stats {
+    grid-template-columns: 1fr;
+  }
+}

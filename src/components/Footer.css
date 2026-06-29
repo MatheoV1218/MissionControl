@@ -5,46 +5,41 @@
   margin-top: 80px;
   background: rgba(248, 231, 189, 0.98);
   border-top: 2px solid var(--ink);
-  box-shadow: 0 -7px 0 rgba(23, 20, 47, 0.5);
 }
 
 .footer-inner {
   width: min(1400px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 42px 0;
+  padding: 44px 0;
   display: grid;
-  grid-template-columns: 1.6fr 0.7fr 0.7fr;
-  gap: 40px;
+  grid-template-columns: 1.5fr 0.7fr 0.7fr;
+  gap: 38px;
 }
 
 .footer-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
   color: var(--ink);
-  text-decoration: none;
   font-weight: 900;
   text-transform: uppercase;
-}
-
-.footer-logo span {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  background: var(--purple);
-  color: var(--cream);
-  border: 2px solid var(--ink);
-  border-radius: 50%;
+  text-decoration: none;
 }
 
 .footer-logo strong {
-  color: var(--orange);
+  color: var(--purple);
 }
 
 .footer-brand p {
-  max-width: 460px;
   margin-top: 14px;
+  max-width: 480px;
+}
+
+.site-credit {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.site-credit span {
+  font-weight: 900;
+  color: var(--ink);
 }
 
 .footer-column {
@@ -55,30 +50,44 @@
 
 .footer-column h4 {
   color: var(--ink);
-  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  margin-bottom: 6px;
+  font-size: 0.85rem;
 }
 
 .footer-column a {
   color: var(--muted);
-  text-decoration: none;
   font-weight: 800;
+  text-decoration: none;
 }
 
 .footer-column a:hover {
-  color: var(--orange);
+  color: var(--purple);
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.social-links a {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: var(--purple);
+  color: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  box-shadow: 4px 4px 0 var(--ink);
+  font-size: 1.2rem;
 }
 
 .footer-bottom {
-  border-top: 2px solid rgba(23, 20, 47, 0.16);
+  border-top: 2px solid rgba(0, 0, 0, 0.12);
   width: min(1400px, calc(100% - 40px));
   margin: 0 auto;
   padding: 18px 0 24px;
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
 }
 
 .footer-bottom p {
@@ -88,10 +97,5 @@
 @media (max-width: 850px) {
   .footer-inner {
     grid-template-columns: 1fr;
-    gap: 26px;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
   }
 }

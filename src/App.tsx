@@ -7,9 +7,11 @@ import Home from "./pages/Home";
 import Business from "./pages/Business";
 import Influencers from "./pages/Influencers";
 import Profiles from "./pages/Profiles";
+import ProfileDetails from "./pages/ProfileDetails";
 import Contact from "./pages/Contact";
 import Account from "./pages/Account";
-import ProfileDetails from "./pages/ProfileDetails";
+import Auth from "./pages/Auth";
+import Admin from "./pages/Admin";
 
 import "./App.css";
 
@@ -25,9 +27,11 @@ function App() {
           <Route path="/business" element={<Business />} />
           <Route path="/influencers" element={<Influencers />} />
           <Route path="/profiles" element={<Profiles />} />
+          <Route path="/profiles/:id" element={<ProfileDetails />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/account" element={<Account />} />
-          <Route path="/profiles/:id" element={<ProfileDetails />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </main>
 

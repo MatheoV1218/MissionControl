@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 import "./Footer.css";
 
 function Footer() {
@@ -7,34 +8,45 @@ function Footer() {
       <div className="footer-inner">
         <div className="footer-brand">
           <Link to="/" className="footer-logo">
-            <span>✦</span>
             Moonshot <strong>Media</strong>
           </Link>
 
           <p>
-            Connecting small businesses with creators through meaningful,
-            approachable influencer partnerships.
+            A creator discovery platform by Spacelady Studios, helping brands
+            and influencers launch stronger collaborations.
+          </p>
+
+          <p className="site-credit">
+            Website made by <span>Matheo Villada</span>
           </p>
         </div>
 
         <div className="footer-column">
-          <h4>Platform</h4>
-          <Link to="/business">For Businesses</Link>
-          <Link to="/influencers">For Influencers</Link>
-          <Link to="/profiles">Explore Profiles</Link>
+          <h4>Explore</h4>
+          <Link to="/profiles">Profiles</Link>
+          <Link to="/business">Businesses</Link>
+          <Link to="/influencers">Influencers</Link>
+          <Link to="/contact">Contact</Link>
         </div>
 
         <div className="footer-column">
-          <h4>Company</h4>
-          <Link to="/">Home</Link>
-          <Link to="/contact">Contact</Link>
-          <Link to="/account">Create Profile</Link>
+          <h4>Social</h4>
+          <div className="social-links">
+            <a href="#" aria-label="Instagram">
+              <FaInstagram />
+            </a>
+            <a href="#" aria-label="TikTok">
+              <FaTiktok />
+            </a>
+            <a href="#" aria-label="YouTube">
+              <FaYoutube />
+            </a>
+          </div>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} Moonshot Media. All rights reserved.</p>
-        <p>Mission Control for creator partnerships.</p>
+        <p>© {new Date().getFullYear()} Spacelady Studios. All rights reserved.</p>
       </div>
     </footer>
   );

@@ -5,27 +5,67 @@ function Contact() {
     <section className="page contact-page">
       <div className="contact-copy">
         <p className="kicker">Contact Mission Control</p>
+
         <h1>Book A Sit Down Before Launch</h1>
+
         <p>
           The goal is to make sure every business and creator starts with the
           right profile, clear expectations, and a strong plan for collaboration.
         </p>
       </div>
 
-      <form className="contact-form">
+      <form
+        className="contact-form"
+        action="https://formsubmit.co/mateovillada1@outlook.com"
+        method="POST"
+      >
+        <input
+          type="hidden"
+          name="_subject"
+          value="New Moonshot Contact Form Submission"
+        />
+
+        <input
+          type="hidden"
+          name="_captcha"
+          value="false"
+        />
+
+        <input
+          type="hidden"
+          name="_template"
+          value="table"
+        />
+
+        <input
+          type="hidden"
+          name="_next"
+          value={window.location.origin + "/contact?success=true"}
+        />
+
         <label>
           Name
-          <input type="text" placeholder="Your name" />
+          <input
+            name="Name"
+            type="text"
+            placeholder="Your name"
+            required
+          />
         </label>
 
         <label>
           Email
-          <input type="email" placeholder="you@email.com" />
+          <input
+            name="Email"
+            type="email"
+            placeholder="you@email.com"
+            required
+          />
         </label>
 
         <label>
           I am a...
-          <select>
+          <select name="Account Type">
             <option>Business Owner</option>
             <option>Influencer / Creator</option>
             <option>Both</option>
@@ -34,10 +74,17 @@ function Contact() {
 
         <label>
           Message
-          <textarea placeholder="Tell us what you want to launch..." />
+          <textarea
+            name="Message"
+            placeholder="Tell us what you want to launch..."
+            required
+          />
         </label>
 
-        <button type="submit" className="btn">
+        <button
+          type="submit"
+          className="btn"
+        >
           Send Transmission
         </button>
       </form>

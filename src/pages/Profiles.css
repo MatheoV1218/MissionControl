@@ -44,7 +44,7 @@
 }
 
 .profile-search-panel input:focus {
-  box-shadow: 4px 4px 0 var(--ink), 0 0 0 4px var(--yellow);
+  box-shadow: 4px 4px 0 var(--ink), 0 0 0 4px var(--mint);
 }
 
 .profile-filters {
@@ -66,7 +66,7 @@
 
 .profile-filters button.active,
 .profile-filters button:hover {
-  background: var(--orange);
+  background: var(--mint);
 }
 
 .profiles-results-head {
@@ -91,7 +91,7 @@
 
 .profiles-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
   gap: 24px;
   align-items: stretch;
 }
@@ -109,7 +109,7 @@
 }
 
 .profile-card-link:focus-visible {
-  outline: 4px solid var(--yellow);
+  outline: 4px solid var(--mint);
   outline-offset: 8px;
   border-radius: 28px;
 }
@@ -158,4 +158,9 @@
   .profiles-grid {
     grid-template-columns: 1fr;
   }
+}
+.load-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 42px;
 }
