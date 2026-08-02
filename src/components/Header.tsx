@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { supabase } from "../lib/supabase";
-import moonshotLogo from "../assets/moonshotLogo.png";
+import spaceladyLogo from "../assets/spacelady-studios.png";
 import "./Header.css";
 
 function Header() {
@@ -29,7 +29,7 @@ function Header() {
   return (
     <header className="site-header">
       <Link to="/" className="brand" onClick={closeMenu}>
-        <img src={moonshotLogo} alt="Moonshot Media" className="brand-logo" />
+        <img src={spaceladyLogo} alt="Moonshot Media" className="brand-logo" />
       </Link>
 
       <button

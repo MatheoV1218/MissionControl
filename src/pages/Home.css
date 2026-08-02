@@ -2,11 +2,17 @@
   min-height: auto;
   padding-top: 64px;
   padding-bottom: 36px;
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+  flex-wrap: wrap;
 }
 
 .hero-copy {
+  flex: 1 1 560px;
   width: min(900px, 100%);
-  background: rgba(255, 243, 215, 0.96);
+  background: var(--galaxy-bg);
+  color: var(--cream);
   border: 2px solid var(--ink);
   border-radius: 38px;
   box-shadow: var(--shadow);
@@ -15,18 +21,39 @@
 }
 
 .hero-copy h1 {
-  color: var(--ink);
+  color: var(--cream);
   font-size: clamp(3.2rem, 6.5vw, 6.8rem);
   line-height: 1;
   max-width: 760px;
+  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.45);
 }
 
 .hero-copy p {
   max-width: 720px;
+  color: rgba(255, 243, 215, 0.78);
 }
 
 .mission-card {
-  display: none;
+  flex: 1 1 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.mission-card img {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.55));
+}
+
+@media (max-width: 950px) {
+  .mission-card {
+    min-height: 260px;
+  }
 }
 
 .home-how {

@@ -3,7 +3,7 @@
   z-index: 2;
   width: 100%;
   margin-top: 80px;
-  background: rgba(248, 231, 189, 0.98);
+  background: var(--galaxy-bg);
   border-top: 2px solid var(--ink);
 }
 
@@ -17,29 +17,31 @@
 }
 
 .footer-logo {
-  color: var(--ink);
+  color: var(--cream);
   font-weight: 900;
   text-transform: uppercase;
   text-decoration: none;
 }
 
 .footer-logo strong {
-  color: var(--purple);
+  color: var(--mint);
 }
 
 .footer-brand p {
   margin-top: 14px;
   max-width: 480px;
+  color: rgba(255, 243, 215, 0.78);
 }
 
 .site-credit {
   font-size: 0.85rem;
   opacity: 0.75;
+  color: rgba(255, 243, 215, 0.78);
 }
 
 .site-credit span {
   font-weight: 900;
-  color: var(--ink);
+  color: var(--cream);
 }
 
 .footer-column {
@@ -49,20 +51,20 @@
 }
 
 .footer-column h4 {
-  color: var(--ink);
+  color: var(--cream);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.85rem;
 }
 
 .footer-column a {
-  color: var(--muted);
+  color: rgba(255, 243, 215, 0.78);
   font-weight: 800;
   text-decoration: none;
 }
 
 .footer-column a:hover {
-  color: var(--purple);
+  color: var(--mint);
 }
 
 .social-links {
@@ -84,7 +86,7 @@
 }
 
 .footer-bottom {
-  border-top: 2px solid rgba(0, 0, 0, 0.12);
+  border-top: 2px solid rgba(255, 255, 255, 0.14);
   width: min(1400px, calc(100% - 40px));
   margin: 0 auto;
   padding: 18px 0 24px;
@@ -92,6 +94,7 @@
 
 .footer-bottom p {
   font-size: 0.9rem;
+  color: rgba(255, 243, 215, 0.78);
 }
 
 @media (max-width: 850px) {

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import astronautGraphic from "../assets/moonshotLogo.png";
 import "./Home.css";
 
 function Home() {
@@ -26,12 +27,7 @@ function Home() {
         </div>
 
         <div className="mission-card">
-          <span>Mission Status</span>
-          <h3>Ready For Liftoff</h3>
-          <p>
-            Build a profile, find aligned matches, and launch campaigns with the
-            right people.
-          </p>
+          <img src={astronautGraphic} alt="Astronaut floating in space" />
         </div>
       </section>
 

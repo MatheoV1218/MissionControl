@@ -17,6 +17,8 @@
   --border: #000000;
   --shadow: 8px 8px 0 #000000;
   --radius: 22px;
+  --galaxy-bg: radial-gradient(circle at 15% 20%, rgba(255, 122, 47, 0.28), transparent 22%),
+    radial-gradient(circle at 80% 10%, rgba(114, 242, 176, 0.22), transparent 24%), var(--space);
 }
 
 * {
@@ -223,10 +225,7 @@ a {
 }
 
 .space-panel {
-  background:
-    radial-gradient(circle at 15% 20%, rgba(255, 122, 47, 0.28), transparent 22%),
-    radial-gradient(circle at 80% 10%, rgba(114, 242, 176, 0.22), transparent 24%),
-    var(--space);
+  background: var(--galaxy-bg);
   color: var(--cream);
   border: 2px solid var(--border);
   border-radius: 30px;

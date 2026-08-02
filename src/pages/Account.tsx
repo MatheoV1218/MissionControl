@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
+import { uploadImage, uploadImages } from "../lib/storage";
 import "./Account.css";
 
 function Account() {
@@ -50,38 +51,6 @@ function Account() {
     setMyProfiles(profileData || []);
   };
 
-  const uploadFile = async (file: File | null) => {
-    if (!file || file.size === 0) return "";
-
-    const filePath = `${Date.now()}-${file.name}`;
-
-    const { error } = await supabase.storage
-      .from("profile-images")
-      .upload(filePath, file);
-
-    if (error) {
-      alert(error.message);
-      return "";
-    }
-
-    const { data } = supabase.storage.from("profile-images").getPublicUrl(filePath);
-    return data.publicUrl;
-  };
-
-  const uploadManyFiles = async (files: FileList | null, max: number) => {
-    if (!files || files.length === 0) return [];
-
-    const limitedFiles = Array.from(files).slice(0, max);
-    const urls: string[] = [];
-
-    for (const file of limitedFiles) {
-      const url = await uploadFile(file);
-      if (url) urls.push(url);
-    }
-
-    return urls;
-  };
-
   const addDate = () => {
     if (!date || availability.includes(date)) return;
     setAvailability([...availability, date]);
@@ -112,7 +81,7 @@ function Account() {
       return;
     }
 
-    const imageUrl = await uploadFile(imageFile);
+    const imageUrl = await uploadImage(imageFile);
 
     const { error } = await supabase.from("profile_requests").insert({
       account_email: email,
@@ -186,8 +155,8 @@ function Account() {
     const imageInput = formEl.elements.namedItem("profile_image") as HTMLInputElement;
     const businessImageInput = formEl.elements.namedItem("business_images") as HTMLInputElement;
 
-    const newProfileImage = await uploadFile(imageInput?.files?.[0] || null);
-    const newBusinessImages = await uploadManyFiles(
+    const newProfileImage = await uploadImage(imageInput?.files?.[0] || null);
+    const newBusinessImages = await uploadImages(
       businessImageInput?.files || null,
       4
     );

@@ -48,7 +48,11 @@ function Profiles() {
     }
 
     if (search.trim()) {
-      const term = `%${search.trim()}%`;
+      // Wrap the value in double quotes and escape backslashes/quotes so
+      // characters with special meaning in PostgREST's or() filter syntax
+      // (comma, parentheses, etc.) can't be used to inject extra clauses.
+      const escaped = search.trim().replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+      const term = `"%${escaped}%"`;
       query = query.or(
         `name.ilike.${term},location.ilike.${term},niche.ilike.${term},bio.ilike.${term},profile_type.ilike.${term}`
       );
@@ -134,6 +138,12 @@ function Profiles() {
             : `${profiles.length} profiles loaded`}
         </p>
       </div>
+
+      {!loading && profiles.length === 0 && (
+        <div className="profiles-empty-state">
+          <p>No profiles match your search yet. Try a different niche, location, or clearing your filters.</p>
+        </div>
+      )}
 
       <div className="profiles-grid">
         {profiles.map((profile) => (

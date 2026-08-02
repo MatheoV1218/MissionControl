@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "../lib/supabase";
+import { uploadImages } from "../lib/storage";
 import "./Admin.css";
 
 type AdminTab = "dashboard" | "requests" | "create" | "profiles";
@@ -61,37 +62,6 @@ function Admin() {
     setProfiles(data || []);
   };
 
-  const uploadFile = async (file: File | null) => {
-    if (!file || file.size === 0) return "";
-
-    const filePath = `${Date.now()}-${file.name}`;
-
-    const { error } = await supabase.storage
-      .from("profile-images")
-      .upload(filePath, file);
-
-    if (error) {
-      alert(error.message);
-      return "";
-    }
-
-    const { data } = supabase.storage.from("profile-images").getPublicUrl(filePath);
-    return data.publicUrl;
-  };
-
-  const uploadManyFiles = async (files: FileList | null, max: number) => {
-    if (!files || files.length === 0) return [];
-
-    const urls: string[] = [];
-
-    for (const file of Array.from(files).slice(0, max)) {
-      const url = await uploadFile(file);
-      if (url) urls.push(url);
-    }
-
-    return urls;
-  };
-
   const closeRequest = async (id: string) => {
     if (!confirm("Close and remove this request?")) return;
 
@@ -136,7 +106,7 @@ function Admin() {
     const formEl = e.currentTarget;
     const form = new FormData(formEl);
     const fileInput = formEl.elements.namedItem("business_images") as HTMLInputElement;
-    const uploadedImages = await uploadManyFiles(fileInput.files, 4);
+    const uploadedImages = await uploadImages(fileInput.files, 4);
 
     const { error } = await supabase.from("public_profiles").insert({
       owner_email: form.get("owner_email"),

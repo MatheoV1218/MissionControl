@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Starfield from "./components/Starfield";
+import DecorativeShapes from "./components/DecorativeShapes";
 
 import Home from "./pages/Home";
 import Business from "./pages/Business";
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className="app">
       <Starfield />
+      <DecorativeShapes />
       <Header />
 
       <main>
