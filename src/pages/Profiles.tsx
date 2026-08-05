@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProfileCard from "../components/ProfileCard";
 import { supabase } from "../lib/supabase";
+import type { PublicProfile } from "../types";
 import "./Profiles.css";
 
 type FilterType = "All" | "Business" | "Creator";
@@ -10,7 +11,7 @@ type AvailabilityFilter = "All" | "Available";
 const PAGE_SIZE = 12;
 
 function Profiles() {
-  const [profiles, setProfiles] = useState<any[]>([]);
+  const [profiles, setProfiles] = useState<PublicProfile[]>([]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState<FilterType>("All");
   const [availabilityFilter, setAvailabilityFilter] =
@@ -19,14 +20,12 @@ function Profiles() {
   const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
 
-  useEffect(() => {
-    setProfiles([]);
-    setPage(0);
-    setHasMore(true);
-    loadProfiles(0, true);
-  }, [filter, availabilityFilter]);
-
   const loadProfiles = async (pageToLoad = page, reset = false) => {
+    if (reset) {
+      setProfiles([]);
+      setHasMore(true);
+    }
+
     setLoading(true);
 
     const from = pageToLoad * PAGE_SIZE;
@@ -74,11 +73,13 @@ function Profiles() {
     setLoading(false);
   };
 
+  useEffect(() => {
+    loadProfiles(0, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- loadProfiles reads current filter/availabilityFilter via closure
+  }, [filter, availabilityFilter]);
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    setProfiles([]);
-    setPage(0);
-    setHasMore(true);
     loadProfiles(0, true);
   };
 
@@ -155,15 +156,15 @@ function Profiles() {
             <ProfileCard
               name={profile.name}
               type={profile.profile_type}
-              location={profile.location}
-              niche={profile.niche}
+              location={profile.location ?? undefined}
+              niche={profile.niche ?? undefined}
               rate={
                 profile.profile_type === "Business"
                   ? profile.business_type || "Business"
                   : "Creator"
               }
-              description={profile.bio}
-              imageUrl={profile.image_url}
+              description={profile.bio ?? undefined}
+              imageUrl={profile.image_url ?? undefined}
               availability={profile.availability || []}
             />
           </Link>

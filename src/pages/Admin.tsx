@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "../lib/supabase";
 import { uploadImages } from "../lib/storage";
+import type { ProfileRequest, PublicProfile } from "../types";
 import "./Admin.css";
 
 type AdminTab = "dashboard" | "requests" | "create" | "profiles";
@@ -8,22 +9,11 @@ type RequestFilter = "All" | "Creator" | "Business";
 
 function Admin() {
   const [allowed, setAllowed] = useState(false);
-  const [requests, setRequests] = useState<any[]>([]);
-  const [profiles, setProfiles] = useState<any[]>([]);
+  const [requests, setRequests] = useState<ProfileRequest[]>([]);
+  const [profiles, setProfiles] = useState<PublicProfile[]>([]);
   const [tab, setTab] = useState<AdminTab>("dashboard");
   const [requestFilter, setRequestFilter] = useState<RequestFilter>("All");
   const [profileSearch, setProfileSearch] = useState("");
-
-  useEffect(() => {
-    checkAdmin();
-  }, []);
-
-  useEffect(() => {
-    if (allowed) {
-      loadRequests();
-      loadProfiles();
-    }
-  }, [allowed]);
 
   const checkAdmin = async () => {
     const { data: userData } = await supabase.auth.getUser();
@@ -62,6 +52,17 @@ function Admin() {
     setProfiles(data || []);
   };
 
+  useEffect(() => {
+    checkAdmin();
+  }, []);
+
+  useEffect(() => {
+    if (allowed) {
+      loadRequests();
+      loadProfiles();
+    }
+  }, [allowed]);
+
   const closeRequest = async (id: string) => {
     if (!confirm("Close and remove this request?")) return;
 
@@ -75,7 +76,7 @@ function Admin() {
     loadRequests();
   };
 
-  const approveCreator = async (request: any) => {
+  const approveCreator = async (request: ProfileRequest) => {
     const { error } = await supabase.from("public_profiles").insert({
       owner_email: request.account_email,
       profile_type: "Creator",
@@ -356,9 +357,9 @@ function Admin() {
                   </p>
                   <p>{profile.bio}</p>
 
-                  {profile.business_images?.length > 0 && (
+                  {(profile.business_images?.length ?? 0) > 0 && (
                     <div className="admin-image-strip">
-                      {profile.business_images.map((image: string) => (
+                      {(profile.business_images ?? []).map((image) => (
                         <img key={image} src={image} alt={profile.name} />
                       ))}
                     </div>

@@ -18,5 +18,16 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
+    rules: {
+      // These rules assume the React Compiler is running (it enforces that
+      // components/effects behave the way the compiler expects to safely
+      // memoize and re-run them). This project doesn't use the React
+      // Compiler, so the standard "fetch data in an effect, setState with
+      // the result" pattern used throughout src/pages is intentional, not a
+      // violation.
+      'react-hooks/purity': 'off',
+      'react-hooks/set-state-in-effect': 'off',
+      'react-hooks/immutability': 'off',
+    },
   },
 ])

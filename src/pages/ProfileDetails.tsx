@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { supabase } from "../lib/supabase";
+import type { PublicProfile } from "../types";
 import "./ProfileDetails.css";
 
 function ProfileDetails() {
   const { id } = useParams();
-  const [profile, setProfile] = useState<any | null>(null);
+  const [profile, setProfile] = useState<PublicProfile | null>(null);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    loadProfile();
-  }, [id]);
 
   const loadProfile = async () => {
     if (!id) return;
@@ -32,6 +29,11 @@ function ProfileDetails() {
     setProfile(data);
     setLoading(false);
   };
+
+  useEffect(() => {
+    loadProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- loadProfile only needs to re-run when id changes
+  }, [id]);
 
   if (loading) {
     return (
@@ -77,7 +79,7 @@ function ProfileDetails() {
             <img src={profile.image_url} alt={profile.name} />
           ) : (
             <div className="profile-image-placeholder">
-              {profile.name.charAt(0)}
+              {(profile.name || "?").charAt(0)}
             </div>
           )}
         </div>

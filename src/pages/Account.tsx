@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { uploadImage, uploadImages } from "../lib/storage";
+import type { ProfileRequest, PublicProfile } from "../types";
 import "./Account.css";
 
 function Account() {
@@ -10,15 +11,11 @@ function Account() {
   const [email, setEmail] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
   const [openForm, setOpenForm] = useState<"Creator" | "Business" | null>(null);
-  const [requests, setRequests] = useState<any[]>([]);
-  const [myProfiles, setMyProfiles] = useState<any[]>([]);
+  const [requests, setRequests] = useState<ProfileRequest[]>([]);
+  const [myProfiles, setMyProfiles] = useState<PublicProfile[]>([]);
   const [availability, setAvailability] = useState<string[]>([]);
   const [date, setDate] = useState("");
   const [editDates, setEditDates] = useState<Record<string, string>>({});
-
-  useEffect(() => {
-    loadAccount();
-  }, []);
 
   const loadAccount = async () => {
     const { data } = await supabase.auth.getUser();
@@ -50,6 +47,11 @@ function Account() {
 
     setMyProfiles(profileData || []);
   };
+
+  useEffect(() => {
+    loadAccount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- run once on mount only
+  }, []);
 
   const addDate = () => {
     if (!date || availability.includes(date)) return;
@@ -112,7 +114,7 @@ function Account() {
     loadAccount();
   };
 
-  const addEditDate = async (profile: any) => {
+  const addEditDate = async (profile: PublicProfile) => {
     const newDate = editDates[profile.id];
     if (!newDate) return;
 
@@ -133,9 +135,9 @@ function Account() {
     loadAccount();
   };
 
-  const removeEditDate = async (profile: any, dateToRemove: string) => {
+  const removeEditDate = async (profile: PublicProfile, dateToRemove: string) => {
     const updatedDates = (profile.availability || []).filter(
-      (item: string) => item !== dateToRemove
+      (item) => item !== dateToRemove
     );
 
     const { error } = await supabase
@@ -151,7 +153,7 @@ function Account() {
     loadAccount();
   };
 
-  const updateProfile = async (profile: any, formData: FormData, formEl: HTMLFormElement) => {
+  const updateProfile = async (profile: PublicProfile, formData: FormData, formEl: HTMLFormElement) => {
     const imageInput = formEl.elements.namedItem("profile_image") as HTMLInputElement;
     const businessImageInput = formEl.elements.namedItem("business_images") as HTMLInputElement;
 
@@ -401,9 +403,9 @@ function Account() {
                         <input name="business_images" type="file" accept="image/*" multiple />
                       </label>
 
-                      {profile.business_images?.length > 0 && (
+                      {(profile.business_images?.length ?? 0) > 0 && (
                         <div className="account-image-grid">
-                          {profile.business_images.map((image: string) => (
+                          {(profile.business_images ?? []).map((image) => (
                             <img key={image} src={image} alt={profile.name} />
                           ))}
                         </div>
