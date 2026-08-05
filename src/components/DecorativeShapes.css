@@ -13,6 +13,29 @@
   filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.15));
 }
 
+.decorative-column {
+  position: absolute;
+  top: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.decorative-column-left {
+  left: 5%;
+}
+
+.decorative-column-right {
+  right: 5%;
+}
+
+.decorative-stacked {
+  position: relative;
+  height: auto;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.15));
+}
+
 @media (max-width: 900px) {
   .decorative-shapes {
     display: none;
