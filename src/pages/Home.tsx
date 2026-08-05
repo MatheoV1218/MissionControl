@@ -7,7 +7,7 @@ function Home() {
     <>
       <section className="page home-hero">
         <div className="hero-copy">
-          <p className="kicker">Welcome To Mission Control</p>
+          <p className="kicker">Welcome To Moonshot Media</p>
           <h1>Launch Your Brand Into The Creator Economy</h1>
           <p>
             Moonshot Media connects small businesses with influencers and
